@@ -8,7 +8,7 @@ function App() {
     }
     return(
         <> "
-            <img src= {logo} alt = "Get Tweets logo" width="150" Height ="30"/>
+            <img src= {logo} alt = "Get Tweets logo" width="150" height ="70"/>
             <div>
                 <input type = "text" placeholder ="@handle" onChange={(event) => setHandle(event.target.value)} />
                 <button onClick = {handleclick}>Get</button>
