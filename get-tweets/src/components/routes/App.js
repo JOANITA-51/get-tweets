@@ -1,65 +1,40 @@
 import * as React from 'react'
-// import logo from '../imgs/myLogo.jpg'
-import axios from 'axios'
+import Posts from '../views/Posts'
+import Todos from '../views/Todos'
+import Home from '../views/Home'
+
+import {
+    BrowserRouter as Router,
+    Switch, Route, Link
+} from 'react-router-dom'
 
 function App() {
-    // const [handle,setHandle] = React.useState('')
-    //const [tweets, setTweets] =React.useState(['HTML5','JS'])
-    // const handleclick = ()=>{
-    //     console.log(handle)
-    // }
-    const [error, setError] = React.useState('')
-    const [todos, setTodos] = React.useState([])
-    React.useEffect(() => {
+    const [page, setPage] = React.useState(null)
 
-    }, [])
+    return (
+        <Router>
+            {/* <button onClick={() => setPage(page === 'posts' ? 'todos' : 'posts')} >
+                {page === 'posts' ? 'Todos' : 'Posts'}
+            </button> */}
+            {/* <Link to="/posts">Posts</Link>
+            <Link to="/todos">Todos</Link> */}
+            <Switch>
+                <Route path="/" exact>
+                    <Home />
+                </Route>
+                <Route path="/posts">
+                    <Posts />
+                </Route>
+                <Route path="/todos">
+                    <Todos />
+                </Route>
+            </Switch>
+{/*             {page === 'posts' ? <button onClick={() => setPage('todos')} > Todos </button>
+                : <button onClick={() => setPage('posts')} > Posts </button>} */}
 
-    // const handleClick = async () => {
-    //     console.log(handle)
-    //     setError('')
-    const getTodos =async()=> {
-        const API_URL = "https://jsonplaceholder.typicode.com/todos";
-        let response = ''
-
-        try {
-            response = await axios.get(API_URL);
-            // console.log(response)
-            let { data } = response
-            setTodos(data)
-            // console.log(data)
-        } catch (error) {
-
-            setError(<h1>Resource error</h1>)
-            console.log(error)
-            console.log(response)
-        }
-    } 
-    const handleClick = () => {
-        setTodos([])
-        setError('')
-        setTimeout(getTodos, 30000)
-    }   
-    return(
-        <>
-            {/* <img src= {logo} alt = "Get Tweets logo" width="150" height ="70"/> */}
-            <h1>Todos</h1>
-            {error}
-            <div>
-                {/* <input type = "text" placeholder ="@handle" onChange={(event) => setHandle(event.target.value)} />
-                <button onClick = {handleclick}>Get</button> */}
-                <button onClick = {handleclick}>Get Todos</button>
-
-            </div>
-            {todos?.length <= 0 && <div>Loading....</div>}
-            {todos?.length > 0 &&
-                <ul>
-                    {todos.map(todo => <li key={todo.id}>{todo.title}</li>)}
-                </ul>
-            }
-
-
-        </>
-
+            {/* {page === 'posts' ? <Posts /> : <Todos />} */}
+        </Router>
     )
 }
+
 export default App
