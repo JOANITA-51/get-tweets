@@ -1,3 +1,16 @@
+html,
+body,
+*:after,
+*:before{
+    margin:0;
+    padding: 0;
+}
+
+.menu {
+    align-self: flex-end;
+    display: inline-block;
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+

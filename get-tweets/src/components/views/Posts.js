@@ -3,7 +3,8 @@ import * as React from 'react'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
 import getData from '../helpers/fetchData'
-function Posts() { //Opening a component
+import '../../styles/posts.css'
+function Posts() { //Opening a componen
 
     const [error, setError] = React.useState('')
     const [posts, setPosts] = React.useState([])
@@ -50,7 +51,7 @@ function Posts() { //Opening a component
                     {posts.map(post => 
                     <Link key={post.id} to={`/posts/${post.id}`}>
                         <li >
-                            <h3>{post.title}</h3> 
+                            <h2>{post.title}</h2> 
                             <p>{post.body}</p>
                         </li>
                      </Link>
