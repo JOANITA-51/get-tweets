@@ -2,6 +2,7 @@ import * as React from 'react'
 import Posts from '../views/Posts'
 import Todos from '../views/Todos'
 import Home from '../views/Home'
+import Apost from '../views/Apost'
 
 import {
     BrowserRouter as Router,
@@ -27,6 +28,9 @@ function App() {
                 </Route>
                 <Route path="/todos">
                     <Todos />
+                </Route>
+                <Route path="/posts/:id">
+                    <Apost />
                 </Route>
             </Switch>
 {/*             {page === 'posts' ? <button onClick={() => setPage('todos')} > Todos </button>
